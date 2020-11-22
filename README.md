@@ -5,7 +5,7 @@ This is a personal project to become more comfortable with React/Redux using Typ
 ## Goals:
  - establish scalable folder structure
  - establish scalable frontend standards & rationale
- - understand the benefits and limits of scss over traditional css
+ - understand the benefits and limits of scss over traditional css, establish stying standards (within component vs separate file, etc)
  - practice writing React component tests
  - make a cool mobile-first sudoku app that displays a popover menu on cell click to do pencil marks
 
