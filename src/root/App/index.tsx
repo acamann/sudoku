@@ -1,22 +1,21 @@
-import React from "react";
+import React from 'react';
+import { AppRegistry, StyleSheet, View } from 'react-native';
+import Home from './../Home';
 
-import styles from './app.module.scss';
-import Header from '../../components/Layout/Header';
-import Footer from '../../components/Layout/Footer';
-import Sudoku from "../../components/Sudoku";
-
-function App() {
+const App: React.FC = () => {
   return (
-    <div className={styles.mainContainer}>
-      <Header />
-
-      <div className={styles.container}>
-        <Sudoku />
-      </div>
-
-      <Footer />
-    </div>
+    <View style={styles.appContainer}>
+      <Home />
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  appContainer: {
+    flex: 1,
+  },
+});
+
+AppRegistry.registerComponent('App', () => App);
 
 export default App;

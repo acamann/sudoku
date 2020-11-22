@@ -2,17 +2,23 @@
   "name": "sudoku",
   "version": "0.1.0",
   "private": true,
+  "main": "./root/App/index.tsx",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.2.2",
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0",
+    "@types/react": "^16.0.0",
+    "@types/react-dom": "^16.0.0",
+    "@types/react-native": "^0.63.36",
     "@types/react-redux": "^7.1.11",
     "@types/redux": "^3.6.0",
+    "expo": "^37.0.0",
     "node-sass": "^4.14.1",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
+    "react": "^16.0.0",
+    "react-art": "^16.13.1",
+    "react-dom": "^16.0.0",
+    "react-native": "^0.62.2",
+    "react-native-web": "^0.12.2",
     "react-redux": "^7.2.2",
     "react-scripts": "4.0.0",
     "redux": "^4.0.5",
@@ -20,10 +26,15 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start-web": "react-scripts start",
+    "build-web": "react-scripts build",
+    "test-web": "react-scripts test",
+    "eject-web": "react-scripts eject",
+    "start-native": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "build:ios": "expo build:ios",
+    "build:android": "expo build:android"
   },
   "eslintConfig": {
     "extends": [
@@ -42,5 +53,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "babel-plugin-module-resolver": "^4.0.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-react-jsx-source": "^6.22.0",
+    "babel-preset-expo": "^8.1.0"
   }
 }

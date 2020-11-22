@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "sdkVersion": "37.0.0",
+    "name": "sudoku",
+    "slug": "sudoku",
+    "version": "0.1.0",
+    "description": "A simple sudoku solving app",
+    "primaryColor": "#ff8179"
+  }
+}
