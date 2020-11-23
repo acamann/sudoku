@@ -13,13 +13,13 @@ const styles = StyleSheet.create({
   header: {
     backgroundColor: "#008877",
     boxShadow: "0 1px 0 rgba(0,0,0,.2)",
-    height: "50px",
+    height: 50,
   },
   logo: {
     color: "#fff",
     fontSize: 20,
     lineHeight: 50,
-    padding: "0 0 0 20px",
+    paddingLeft: 20,
     textTransform: "capitalize",
   }
 })

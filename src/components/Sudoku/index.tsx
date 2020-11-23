@@ -1,25 +1,34 @@
 import React from 'react';
 import { View, Text, StyleSheet } from "react-native";
+import { Square } from '../../store/sudoku/types';
 
 export interface SudokuProps {
-  puzzle?: number[][];
+  puzzle: Square[];
 }
 
 const Sudoku: React.FC<SudokuProps> = (props: SudokuProps) => {
-  const puzzle = props.puzzle ?? Array<number[]>(9).fill(Array(9).fill(0));
+  const puzzle = props.puzzle
   
+  const grid = Array<number[]>(9).fill(Array(9).fill(0));
+
   return (
     <View style={styles.grid}>
-      {puzzle.map((row, rowIndex) => (
+      <Text>{puzzle.length}</Text>
+      {puzzle.map(square => (
+        <Text>{square.value}</Text>
+      ))}
+      {grid.map((row, rowIndex) => (
         <View key={rowIndex} style={styles.row}>
-          {row.map((value, colIndex) => (
+          {row.map((_, colIndex) => (
             <View
               data-row={rowIndex}
               data-col={colIndex}
               key={`${rowIndex}-${colIndex}`}
               style={styles.cell}
             >
-              <Text style={styles.value}>{value}</Text>
+              <Text style={styles.value}>
+                {puzzle.filter(square => (square.x === rowIndex && square.y === colIndex) ? square.value : "")[0] ?? "0"}
+              </Text>
             </View>
           ))}
         </View>
