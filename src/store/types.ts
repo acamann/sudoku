@@ -1,20 +1,6 @@
 // MODELS
-// export type Puzzle = {
-//   squares: Square[],
-// }
-
-// export type Square = {
-//   x: number,
-//   y: number,
-//   value: number,
-// }
-
 export type Puzzle = {
   board: number[][];
-}
-
-export interface SudokuState {
-  puzzle: Puzzle;
 }
 
 export const FETCH_PUZZLE = 'sudoku/fetchPuzzle'

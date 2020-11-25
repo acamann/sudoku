@@ -1,3 +1,4 @@
+import { put, takeLatest } from 'redux-saga/effects';
 import {
   Puzzle,
   FETCH_PUZZLE,
@@ -24,7 +25,7 @@ export const getPuzzle = (difficulty: "easy" | "medium" | "hard" = "medium") => 
 });
 
 //REDUCERS
-const sudokuReducer = (state = initialState, action: SudokuActionTypes): SudokuStore => {
+export const sudokuReducer = (state = initialState, action: SudokuActionTypes): SudokuStore => {
   switch (action.type) {
     case FETCH_PUZZLE:
       return {
@@ -42,4 +43,15 @@ const sudokuReducer = (state = initialState, action: SudokuActionTypes): SudokuS
       return state;
    }
 };
-export default sudokuReducer;
+
+//SAGAS
+function* fetchPuzzleSaga({ payload }: ReturnType<any>) {
+  const difficulty = payload.difficulty;
+  const json = yield fetch(`https://sugoku2.herokuapp.com/board?difficulty=${difficulty}`)
+    .then(resp => resp.json());
+  yield put({ type: PUZZLE_FETCHED, puzzle: json });
+}
+
+export function* sudokuActionWatcher() {
+  yield takeLatest(FETCH_PUZZLE, fetchPuzzleSaga)
+}

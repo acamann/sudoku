@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet } from "react-native";
-import { Puzzle } from '../../store/sudoku/types';
+import { Puzzle } from '../../store/types';
 import SudokuCell from './SudokuCell';
 
 export interface SudokuProps {

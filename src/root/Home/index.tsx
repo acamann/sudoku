@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { Button, ScrollView, StyleSheet, View } from "react-native";
 import Header from "../../components/Layout/Header";
 import Sudoku from "../../components/Sudoku";
-import { getPuzzle } from "../../store/sudoku/store";
+import { getPuzzle } from "../../store/sudoku";
 import { Store } from "../../store";
-import { Puzzle } from "../../store/sudoku/types";
+import { Puzzle } from "../../store/types";
 
 const Home: React.FC = () => {
   const dispatch = useDispatch();
