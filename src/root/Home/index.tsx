@@ -1,17 +1,18 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Text, Button, ScrollView, StyleSheet, View } from "react-native";
+import { Button, ScrollView, StyleSheet, View } from "react-native";
 import Header from "../../components/Layout/Header";
 import Sudoku from "../../components/Sudoku";
-import { fetchPuzzle } from "../../store/sudoku/actions";
-import { RootState } from "../../store";
+import { getPuzzle } from "../../store/sudoku/actions";
+import { Store } from "../../store";
+import { Puzzle } from "../../store/sudoku/types";
 
 const Home: React.FC = () => {
   const dispatch = useDispatch();
-  const puzzle = useSelector((store: RootState) => store.sudoku.puzzle);
+  const puzzle: Puzzle = useSelector((store: Store) => store.sudoku.puzzle);
 
   const handlePress = () => {
-    dispatch(fetchPuzzle());
+    dispatch(getPuzzle());
   }
 
   return (

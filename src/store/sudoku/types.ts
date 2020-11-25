@@ -1,12 +1,16 @@
 // MODELS
-export type Puzzle = {
-  squares: Square[],
-}
+// export type Puzzle = {
+//   squares: Square[],
+// }
 
-export type Square = {
-  x: number,
-  y: number,
-  value: number,
+// export type Square = {
+//   x: number,
+//   y: number,
+//   value: number,
+// }
+
+export type Puzzle = {
+  board: number[][];
 }
 
 export interface SudokuState {
@@ -14,16 +18,16 @@ export interface SudokuState {
 }
 
 export const FETCH_PUZZLE = 'FETCH_PUZZLE'
-export const UPDATE_CELL = 'UPDATE_CELL'
+export const PUZZLE_FETCHED = 'PUZZLE_FETCHED'
 
 interface FetchSudokuAction {
   type: typeof FETCH_PUZZLE;
-  payload: number;
+  difficulty: "easy" | "medium" | "hard";
 }
 
-interface UpdateCellAction {
-  type: typeof UPDATE_CELL;
-  payload: Square;
+interface SudokuFetchedAction {
+  type: typeof PUZZLE_FETCHED;
+  puzzle: Puzzle;
 }
 
-export type SudokuActionTypes = FetchSudokuAction | UpdateCellAction
+export type SudokuActionTypes = FetchSudokuAction | SudokuFetchedAction

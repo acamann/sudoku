@@ -1,12 +1,14 @@
-import { combineReducers, createStore } from "redux";
+import { combineReducers, createStore, applyMiddleware } from "redux";
+import createSagaMiddleware from 'redux-saga'
 import sudokuReducer from './sudoku/reducers';
+import rootSaga from './sudoku/sagas';
 
+const sagaMiddleware = createSagaMiddleware();
 const rootReducer = combineReducers({
-  sudoku: sudokuReducer
+  sudoku: sudokuReducer,
 })
+const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
+sagaMiddleware.run(rootSaga);
 
-const store = createStore(rootReducer);
+export type Store = ReturnType<typeof rootReducer>;
 export default store;
-
-// How to export store type ?!  Not like this...
-export type RootState = ReturnType<typeof rootReducer>;

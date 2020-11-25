@@ -1,65 +1,37 @@
 import {
-  Puzzle,
-  SudokuActionTypes,
   FETCH_PUZZLE,
-  UPDATE_CELL
+  Puzzle,
+  PUZZLE_FETCHED,
+  SudokuActionTypes,
 } from './types'
 
-interface Store {
+interface SudokuStore {
   puzzle: Puzzle;
+  difficulty?: string;
+  loading: boolean;
 }
 
-const initialState: Store = {
-  puzzle: { squares: [] },
-} 
+const initialState: SudokuStore = {
+  puzzle: { board: [] },
+  loading: false,
+}
 
-const sudokuReducer = (state = initialState, action: SudokuActionTypes) => {
+const sudokuReducer = (state = initialState, action: SudokuActionTypes): SudokuStore => {
   switch (action.type) {
     case FETCH_PUZZLE:
-      return { ...state, puzzle: { squares: [{x: 4, y: 2, value: 3}]}};
-    case UPDATE_CELL:
-      return { ...state, puzzle: undefined };
+      return {
+        ...state,
+        difficulty: action.difficulty,
+        loading: true,
+      };
+    case PUZZLE_FETCHED:
+      return {
+        ...state,
+        puzzle: action.puzzle,
+        loading: false,
+      }
     default:
-      return state; 
-  }
-}
-
-export default sudokuReducer
-
-// //STORE
-// const initialState: SudokuState = {
-//   puzzle: { squares: [{x: 1, y: 2, value: 5}] },
-// }
-
-// //REDUCER
-// export const sudokuReducer = (
-//   state = initialState,
-//   action: SudokuActionTypes
-// ): SudokuState => {
-//   console.log("ENTERED REDUCER");
-//   console.log(state);
-//   console.log(action);
-//   switch (action.type) {
-//     case FETCH_PUZZLE:
-//       const newSquares = [...state.puzzle.squares];
-//       console.log(newSquares);
-//       newSquares.push({x: 4, y: 2, value: 3});
-//       return {
-//         ...state,
-//         puzzle: { ...state.puzzle, squares: newSquares }
-//       }
-//     case UPDATE_CELL:
-//       return {
-//         ...state,
-//         puzzle: { squares: state.puzzle.squares.map(square => {
-//           if (square.x === action.payload.x && square.y === action.payload.y) {
-//             return action.payload;
-//           } else {
-//             return square;
-//           }
-//         })}
-//       }
-//     default:
-//       return { ...state };
-//   }
-// }
+      return state;
+   }
+};
+export default sudokuReducer;
