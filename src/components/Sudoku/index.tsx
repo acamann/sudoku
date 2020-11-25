@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { Puzzle } from '../../store/sudoku/types';
-import SudokuEditCell from './SudokuEditCell';
+import SudokuCell from './SudokuCell';
 
 export interface SudokuProps {
   puzzle: Puzzle;
@@ -23,7 +23,7 @@ const Sudoku: React.FC<SudokuProps> = (props: SudokuProps) => {
               key={`${rowIndex}-${colIndex}`}
               style={styles.cell}
             >
-              {value > 0 ? <Text style={styles.value}>{value}</Text> : <SudokuEditCell /> }
+              <SudokuCell initial={value} correct={5} />
             </View>
           ))}
         </View>
@@ -56,9 +56,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     flexDirection: "column",
   },
-  value: {
-    fontSize: 16,
-  }
 });
 
 export default Sudoku;
