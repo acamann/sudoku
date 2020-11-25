@@ -1,6 +1,6 @@
 import { combineReducers, createStore, applyMiddleware } from "redux";
 import createSagaMiddleware from 'redux-saga'
-import sudokuReducer from './sudoku/reducers';
+import sudokuReducer from './sudoku/store';
 import rootSaga from './sudoku/sagas';
 
 const sagaMiddleware = createSagaMiddleware();

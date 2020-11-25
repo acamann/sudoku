@@ -1,10 +1,11 @@
 import {
-  FETCH_PUZZLE,
   Puzzle,
+  FETCH_PUZZLE,
   PUZZLE_FETCHED,
   SudokuActionTypes,
 } from './types'
 
+//STORE
 interface SudokuStore {
   puzzle: Puzzle;
   difficulty?: string;
@@ -16,6 +17,13 @@ const initialState: SudokuStore = {
   loading: false,
 }
 
+//ACTIONS
+export const getPuzzle = (difficulty: "easy" | "medium" | "hard" = "medium") => ({
+  type: FETCH_PUZZLE,
+  payload: { difficulty },
+});
+
+//REDUCERS
 const sudokuReducer = (state = initialState, action: SudokuActionTypes): SudokuStore => {
   switch (action.type) {
     case FETCH_PUZZLE:

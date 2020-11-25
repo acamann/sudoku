@@ -17,8 +17,8 @@ export interface SudokuState {
   puzzle: Puzzle;
 }
 
-export const FETCH_PUZZLE = 'FETCH_PUZZLE'
-export const PUZZLE_FETCHED = 'PUZZLE_FETCHED'
+export const FETCH_PUZZLE = 'sudoku/fetchPuzzle'
+export const PUZZLE_FETCHED = 'sudoku/puzzleFetched'
 
 interface FetchSudokuAction {
   type: typeof FETCH_PUZZLE;
