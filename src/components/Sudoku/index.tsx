@@ -11,6 +11,7 @@ const Sudoku: React.FC<SudokuProps> = (props: SudokuProps) => {
   const puzzle = props.puzzle
   
   const board = puzzle.board;
+  const solution = puzzle.solution;
 
   return (
     <View style={styles.grid}>
@@ -23,7 +24,7 @@ const Sudoku: React.FC<SudokuProps> = (props: SudokuProps) => {
               key={`${rowIndex}-${colIndex}`}
               style={styles.cell}
             >
-              <SudokuCell initial={value} correct={5} />
+              <SudokuCell initial={value} correct={solution[rowIndex][colIndex]} />
             </View>
           ))}
         </View>

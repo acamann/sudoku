@@ -1,4 +1,5 @@
 import { put, takeLatest } from 'redux-saga/effects';
+import { encodeParams } from '../utils/common';
 import {
   Puzzle,
   FETCH_PUZZLE,
@@ -14,7 +15,10 @@ interface SudokuStore {
 }
 
 const initialState: SudokuStore = {
-  puzzle: { board: Array<number[]>(9).fill(Array(9).fill(0)) },
+  puzzle: {
+    board: Array<number[]>(9).fill(Array(9).fill(0)),
+    solution: Array<number[]>(9).fill(Array(9).fill(0)),
+  },
   loading: false,
 }
 
@@ -47,9 +51,22 @@ export const sudokuReducer = (state = initialState, action: SudokuActionTypes): 
 //SAGAS
 function* fetchPuzzleSaga({ payload }: ReturnType<any>) {
   const difficulty = payload.difficulty;
-  const json = yield fetch(`https://sugoku2.herokuapp.com/board?difficulty=${difficulty}`)
-    .then(resp => resp.json());
-  yield put({ type: PUZZLE_FETCHED, puzzle: json });
+
+  const puzzleJson = yield fetch(`https://sugoku2.herokuapp.com/board?difficulty=${difficulty}`)
+    .then(resp => resp.json())
+    .catch(console.warn);
+
+  const solution = yield fetch('https://sugoku2.herokuapp.com/solve', {
+    method: 'POST',
+    body: encodeParams(puzzleJson),
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+  })
+    .then(response => response.json())
+    .catch(console.warn);
+
+  const puzzle: Puzzle = { board: puzzleJson.board, solution: solution.solution };
+  console.log(puzzle);
+  yield put({ type: PUZZLE_FETCHED, puzzle: puzzle });
 }
 
 export function* sudokuActionWatcher() {

@@ -1,6 +1,7 @@
 // MODELS
 export type Puzzle = {
   board: number[][];
+  solution: number[][];
 }
 
 export const FETCH_PUZZLE = 'sudoku/fetchPuzzle'
