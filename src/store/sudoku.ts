@@ -14,7 +14,7 @@ interface SudokuStore {
 }
 
 const initialState: SudokuStore = {
-  puzzle: { board: [] },
+  puzzle: { board: Array<number[]>(9).fill(Array(9).fill(0)) },
   loading: false,
 }
 

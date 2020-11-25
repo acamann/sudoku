@@ -10,7 +10,7 @@ export interface SudokuProps {
 const Sudoku: React.FC<SudokuProps> = (props: SudokuProps) => {
   const puzzle = props.puzzle
   
-  const board = puzzle.board ?? Array<number[]>(9).fill(Array(9).fill(0));
+  const board = puzzle.board;
 
   return (
     <View style={styles.grid}>
@@ -36,19 +36,21 @@ const styles = StyleSheet.create({
   grid: {
     display: "flex",
     flexDirection: "column",
-    height: "100vh",
+    padding: 16,
   },
   row: {
     display: "flex",
     flexDirection: "row",
-    maxHeight: "50px",
+    maxHeight: 50,
+    minHeight: 30,
     flexGrow: 1,
     justifyContent: "center",
     alignContent: "center",
   },
   cell: {
     flexGrow: 1,
-    maxWidth: "50px",
+    maxWidth: 50,
+    minWidth: 30,
     padding: "4px",
     border: "solid 1px lightgray",
     textAlign: "center",
