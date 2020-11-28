@@ -24,8 +24,9 @@ const SudokuCell: React.FC<SudokuCellProps> = (props: SudokuCellProps) => {
   } else {
     return (
       <TextInput
-        style={{ width: "100%", height: "100%", textAlign: "center", color: correct === current ? "green" : "red" }}
-        onChangeText={text => isValid(text) ? setCurrent(+text) : setCurrent(undefined) }
+        style={{ flex: 1, textAlign: "center", color: !current ? "black" : correct === current ? "green" : "red" }}
+        selectTextOnFocus
+        onChangeText={text => isValid(text.slice(-1)) ? setCurrent(+text.slice(-1)) : setCurrent(undefined) }
         value={current ? current.toString() : ""}
       />
     )

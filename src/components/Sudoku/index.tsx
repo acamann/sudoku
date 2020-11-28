@@ -38,26 +38,20 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     padding: 16,
+    flexGrow: 1
   },
   row: {
     display: "flex",
     flexDirection: "row",
-    maxHeight: 50,
-    minHeight: 30,
     flexGrow: 1,
     justifyContent: "center",
     alignContent: "center",
   },
   cell: {
     flexGrow: 1,
-    maxWidth: 50,
-    minWidth: 30,
-    padding: "4px",
+    flexBasis: 0,
     border: "solid 1px lightgray",
     textAlign: "center",
-    display: "flex",
-    justifyContent: "center",
-    flexDirection: "column",
   },
 });
 
