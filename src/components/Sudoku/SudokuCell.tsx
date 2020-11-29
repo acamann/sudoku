@@ -1,9 +1,19 @@
 import React, { useState } from 'react';
-import { Text, TextInput } from "react-native";
+import { Text, TextInput, Dimensions } from "react-native";
 
 interface SudokuCellProps {
   initial: number;
   correct: number;
+}
+
+const width = Dimensions.get('window').width;
+const height = Dimensions.get('window').height;
+const minimumDimension = Math.min(width, height);
+
+const styles = {
+  value: {
+    fontSize: minimumDimension / 12,
+  }
 }
 
 const SudokuCell: React.FC<SudokuCellProps> = (props: SudokuCellProps) => {
@@ -24,7 +34,11 @@ const SudokuCell: React.FC<SudokuCellProps> = (props: SudokuCellProps) => {
   } else {
     return (
       <TextInput
-        style={{ flex: 1, textAlign: "center", color: !current ? "black" : correct === current ? "green" : "red" }}
+        style={[{
+          flex: 1,
+          textAlign: "center",
+          color: !current ? "black" : correct === current ? "green" : "red",
+        }, styles.value]}
         selectTextOnFocus
         onChangeText={text => isValid(text.slice(-1)) ? setCurrent(+text.slice(-1)) : setCurrent(undefined) }
         value={current ? current.toString() : ""}
@@ -33,11 +47,4 @@ const SudokuCell: React.FC<SudokuCellProps> = (props: SudokuCellProps) => {
   }
 }
 
-const styles = {
-  value: {
-    fontSize: 16,
-  }
-}
-
 export default SudokuCell;
-

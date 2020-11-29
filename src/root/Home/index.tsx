@@ -43,6 +43,9 @@ const styles = StyleSheet.create({
   },
   main: {
     padding: 16,
+    flex: 1,
+    display: "flex",
+    flexDirection: "column"
   },
 });
 

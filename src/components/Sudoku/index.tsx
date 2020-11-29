@@ -38,20 +38,22 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     padding: 16,
-    flexGrow: 1
+    flex: 1
   },
   row: {
     display: "flex",
     flexDirection: "row",
-    flexGrow: 1,
+    flex: 1,
     justifyContent: "center",
     alignContent: "center",
   },
   cell: {
-    flexGrow: 1,
-    flexBasis: 0,
+    flex: 1,
     border: "solid 1px lightgray",
     textAlign: "center",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
   },
 });
 
