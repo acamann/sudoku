@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { Button, ScrollView, StyleSheet, View } from "react-native";
@@ -17,6 +17,12 @@ const Home: React.FC = () => {
 
   const handleGetPuzzle = (): void => { dispatch(getPuzzle()); }
   const handleCheckPuzzle = (): void => { return; }
+
+  useEffect((): void => {
+    if (puzzle.board.length === 0) {
+      handleGetPuzzle();
+    }
+  }, [puzzle]);
 
   return (
     <ScrollView
