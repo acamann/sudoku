@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Text, TextInput, Dimensions } from "react-native";
 
 interface SudokuCellProps {
@@ -12,7 +12,7 @@ const minimumDimension = Math.min(width, height);
 
 const styles = {
   value: {
-    fontSize: minimumDimension / 12,
+    fontSize: height / 20,
   }
 }
 
@@ -40,6 +40,8 @@ const SudokuCell: React.FC<SudokuCellProps> = (props: SudokuCellProps) => {
           color: !current ? "black" : correct === current ? "green" : "red",
         }, styles.value]}
         selectTextOnFocus
+        keyboardType="numeric"
+        caretHidden
         onChangeText={text => isValid(text.slice(-1)) ? setCurrent(+text.slice(-1)) : setCurrent(undefined) }
         value={current ? current.toString() : ""}
       />

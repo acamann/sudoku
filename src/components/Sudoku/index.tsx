@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, StyleSheet } from "react-native";
 import { Puzzle } from '../../store/types';
+import useArrowFocus from '../useArrowFocus';
 import SudokuCell from './SudokuCell';
 
 export interface SudokuProps {
@@ -13,6 +14,13 @@ const Sudoku: React.FC<SudokuProps> = (props: SudokuProps) => {
   const board = puzzle.board;
   const solution = puzzle.solution;
 
+  // const [currentFocusRow, setCurrentFocusRow, currentFocusCol, setCurrentFocusCol] = useArrowFocus(8, 8);
+
+  // useEffect((): void => {
+  //   console.log(currentFocusRow);
+  //   console.log(currentFocusCol);
+  // }, [currentFocusCol, currentFocusRow]);
+
   return (
     <View style={styles.grid}>
       {board.map((row, rowIndex) => (
@@ -24,7 +32,10 @@ const Sudoku: React.FC<SudokuProps> = (props: SudokuProps) => {
               key={`${rowIndex}-${colIndex}`}
               style={styles.cell}
             >
-              <SudokuCell initial={value} correct={solution[rowIndex][colIndex]} />
+              <SudokuCell
+                initial={value}
+                correct={solution[rowIndex][colIndex]}
+              />
             </View>
           ))}
         </View>
