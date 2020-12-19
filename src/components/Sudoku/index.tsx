@@ -30,7 +30,7 @@ const Sudoku: React.FC<SudokuProps> = (props: SudokuProps) => {
               data-row={rowIndex}
               data-col={colIndex}
               key={`${rowIndex}-${colIndex}`}
-              style={styles.cell}
+              style={[styles.cell, styleCell(rowIndex, colIndex)]}
             >
               <SudokuCell
                 initial={value}
@@ -43,6 +43,13 @@ const Sudoku: React.FC<SudokuProps> = (props: SudokuProps) => {
     </View>
   );
 }
+
+const styleCell = (row: number, column: number): {} => {
+  return {
+    borderBottom: row === 2 || row === 5 ? 'solid 1px black' : 'solid 1px lightgray',
+    borderRight: column === 2 || column === 5 ? 'solid 1px black' : 'solid 1px lightgray',
+  }
+} 
 
 const styles = StyleSheet.create({
   grid: {
